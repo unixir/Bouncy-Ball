@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 41247566}
   - component: {fileID: 41247565}
   - component: {fileID: 41247564}
+  - component: {fileID: 41247567}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -241,6 +242,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41247562}
   m_CullTransparentMesh: 0
+--- !u!95 &41247567
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41247562}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6781bbb815e0c47419c2414bcdb485c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &142163289
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,8 +271,9 @@ GameObject:
   m_Component:
   - component: {fileID: 142163290}
   - component: {fileID: 142163291}
+  - component: {fileID: 142163292}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: SoundToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,6 +357,25 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!95 &142163292
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142163289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6781bbb815e0c47419c2414bcdb485c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &218432803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,6 +1795,7 @@ GameObject:
   - component: {fileID: 838957798}
   - component: {fileID: 838957797}
   - component: {fileID: 838957796}
+  - component: {fileID: 838957799}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1872,6 +1913,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838957794}
   m_CullTransparentMesh: 0
+--- !u!95 &838957799
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838957794}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6781bbb815e0c47419c2414bcdb485c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &887391688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2490,7 @@ GameObject:
   - component: {fileID: 1194679601}
   - component: {fileID: 1194679603}
   - component: {fileID: 1194679602}
+  - component: {fileID: 1194679604}
   m_Layer: 5
   m_Name: Heading
   m_TagString: Untagged
@@ -2579,6 +2640,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194679600}
   m_CullTransparentMesh: 0
+--- !u!95 &1194679604
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194679600}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6781bbb815e0c47419c2414bcdb485c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1488678394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,7 +3019,9 @@ MonoBehaviour:
   - {fileID: 719156337128912974}
   - {fileID: 698588699}
   - {fileID: 519420030}
+  - {fileID: 887391691}
   soundToggle: {fileID: 142163291}
+  animators: []
 --- !u!114 &1623710412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3655,6 +3737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 719156337128912974, guid: 6c34b250a4f79b242a37318ad748084b,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1370728453315171985, guid: 6c34b250a4f79b242a37318ad748084b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3710,10 +3797,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 719156337128912974, guid: 6c34b250a4f79b242a37318ad748084b,
+    - target: {fileID: 1370728453315171987, guid: 6c34b250a4f79b242a37318ad748084b,
         type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
+      propertyPath: m_GravityScale
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c34b250a4f79b242a37318ad748084b, type: 3}
