@@ -10,6 +10,7 @@ public class MainMenuCanvas : MonoBehaviour
     void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameManager.GetComponent<GameManager>().audioSources = audioSources;
         gameManager.SetActive(false);
         gameCanvas.enabled = false;
         pauseMenuCanvas.enabled = false;
@@ -33,6 +34,7 @@ public class MainMenuCanvas : MonoBehaviour
         {
             audioSource.volume = soundToggle.isOn ? 1f : 0f;
         }
+        gameManager.GetComponent<GameManager>().isSoundOn=soundToggle.isOn;
     }
 
 }

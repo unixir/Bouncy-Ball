@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public Canvas gameCanvas, mainMenuCanvas, pauseCanvas;
     public Button pauseButton;
+    public AudioSource[] audioSources;
+    public bool isSoundOn;
     //private
     bool modeIsLeft,timerEnabled=false;
     float hoopPosX, hoopPosY, timeDepletionRate = 5f, winTime=50;
@@ -25,6 +27,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         audioSource = GetComponent<AudioSource>();
+        ChangeVolume();
         Time.timeScale = 1f;
         mainMenuCanvas.enabled = false;
         gameCanvas.enabled = true;
@@ -40,6 +43,14 @@ public class GameManager : MonoBehaviour
         else modeIsLeft = false;
         player.GetComponent<BallControl>().modeLeft = modeIsLeft;
         SpawnHoop();
+    }
+
+    public void ChangeVolume()
+    {
+        foreach (AudioSource audioSource in audioSources)
+        {
+            audioSource.volume = isSoundOn ? 1f : 0f;
+        }
     }
 
     private void OnDisable()
@@ -119,6 +130,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameCanvas.enabled = false;
         pauseCanvas.enabled = true;
+        pauseButton.enabled = false;
     }
 
     public void UnpauseGame()
@@ -126,5 +138,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         gameCanvas.enabled = true;
         pauseCanvas.enabled = false;
+        pauseButton.enabled = true;
     }
 }
