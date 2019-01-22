@@ -11,11 +11,12 @@ public class GameManager : MonoBehaviour
     public Image sliderFillArea;
     public TextMeshProUGUI scoreText;
     public Canvas gameCanvas, mainMenuCanvas, pauseCanvas;
-
+    public Button pauseButton;
     //private
     bool modeIsLeft,timerEnabled=false;
     float hoopPosX, hoopPosY, timeDepletionRate = 5f, winTime=50;
     int score;
+    AudioSource audioSource;
     void Start()
     {
         
@@ -23,12 +24,16 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        audioSource = GetComponent<AudioSource>();
+        Time.timeScale = 1f;
         mainMenuCanvas.enabled = false;
         gameCanvas.enabled = true;
         timerEnabled = true;
+        pauseButton.enabled = true;
         timeSlider.value = 100;
         StartCoroutine(StartTimer());
         score = 0;
+        scoreText.text = score.ToString();
         player = GameObject.FindGameObjectWithTag("Player");
         if (Random.Range(0, 1.1f) >= 0.5f)
             modeIsLeft = true;
@@ -41,8 +46,10 @@ public class GameManager : MonoBehaviour
     {
         StopCoroutine(StartTimer());
         //player.SetActive(false);
+        if(gameCanvas)
         gameCanvas.enabled = false;
         DestroyAllHoops();
+        pauseButton.enabled = false;
     }
 
     IEnumerator StartTimer()
@@ -72,8 +79,11 @@ public class GameManager : MonoBehaviour
 
     public void ShowMainMenu()
     {
+        gameCanvas.enabled = false;
+        pauseCanvas.enabled = false;
         mainMenuCanvas.enabled = true;
         this.gameObject.SetActive(false);
+        OnDisable();
         DestroyAllHoops();
     }
 
@@ -87,6 +97,7 @@ public class GameManager : MonoBehaviour
     }
     public void RespawnHoops()
     {
+        audioSource.Play();
         timeSlider.value += winTime;
         ++score;
         scoreText.text = score.ToString();
@@ -103,5 +114,17 @@ public class GameManager : MonoBehaviour
         iHoop = Instantiate(hoopPrefab, new Vector2(hoopPosX, hoopPosY), Quaternion.Euler(80f, 0f, 0f));
     }
 
-    
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        gameCanvas.enabled = false;
+        pauseCanvas.enabled = true;
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1f;
+        gameCanvas.enabled = true;
+        pauseCanvas.enabled = false;
+    }
 }

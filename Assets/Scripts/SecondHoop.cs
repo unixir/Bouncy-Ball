@@ -14,7 +14,6 @@ public class SecondHoop : MonoBehaviour
     {
         if (GetComponentInParent<FirstHoop>().firstHoop)
         {
-            Debug.Log("Score!");
             gameManager.RespawnHoops();
         }
     }
