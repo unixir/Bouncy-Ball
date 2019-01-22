@@ -5,40 +5,84 @@ using UnityEngine.UI;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
+    //public
     public GameObject player, hoopPrefab, iHoop;
     public Slider timeSlider;
+    public Image sliderFillArea;
     public TextMeshProUGUI scoreText;
-    public bool modeIsLeft,timerEnabled=false;
-    public float hoopPosX, hoopPosY, timeDepletionRate = 5f, winTime=50;
+    public Canvas gameCanvas, mainMenuCanvas, pauseCanvas;
+
+    //private
+    bool modeIsLeft,timerEnabled=false;
+    float hoopPosX, hoopPosY, timeDepletionRate = 5f, winTime=50;
     int score;
     void Start()
     {
+        
+    }
+
+    private void OnEnable()
+    {
+        mainMenuCanvas.enabled = false;
+        gameCanvas.enabled = true;
         timerEnabled = true;
+        timeSlider.value = 100;
         StartCoroutine(StartTimer());
         score = 0;
         player = GameObject.FindGameObjectWithTag("Player");
-        if (Random.Range(0, 0.5f) >= 0.5f)
-        {
+        if (Random.Range(0, 1.1f) >= 0.5f)
             modeIsLeft = true;
-        }
         else modeIsLeft = false;
         player.GetComponent<BallControl>().modeLeft = modeIsLeft;
         SpawnHoop();
-        
-        timerEnabled = true;
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(StartTimer());
+        //player.SetActive(false);
+        gameCanvas.enabled = false;
+        DestroyAllHoops();
     }
 
     IEnumerator StartTimer()
     {
         while (timerEnabled)
         {
-            //Debug.Log("Timer");
             timeSlider.value = timeSlider.value - timeDepletionRate;
+            if (timeSlider.value <= 60)
+            {
+                sliderFillArea.color = Color.yellow;
+            }
+            if (timeSlider.value <= 20)
+            {
+                sliderFillArea.color = Color.red;
+            }
+            else
+            {
+                sliderFillArea.color = Color.green;
+            }
             if (timeSlider.value <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                ShowMainMenu();
             }
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public void ShowMainMenu()
+    {
+        mainMenuCanvas.enabled = true;
+        this.gameObject.SetActive(false);
+        DestroyAllHoops();
+    }
+
+    void DestroyAllHoops()
+    {
+        GameObject[] hoops = GameObject.FindGameObjectsWithTag("Hoop");
+        foreach(GameObject hoop in hoops)
+        {
+            Destroy(hoop);
         }
     }
     public void RespawnHoops()
